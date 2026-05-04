@@ -1,9 +1,8 @@
 // Creating a Express server
 const express = require("express");
-const { connectDB } = require('../src/config/database')
+const { connectDB } = require("./config/database");
 const dotenv = require("dotenv");
 const cors = require("cors");
-
 
 const app = express();
 
@@ -14,20 +13,21 @@ app.use(cookieParser());
 
 dotenv.config();
 // ✅ ADD THIS (VERY IMPORTANT)
-app.use(cors({
-  origin: "http://localhost:5173", // React frontend
-  credentials: true               // allow cookies (JWT auth)
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173", // React frontend
+    credentials: true, // allow cookies (JWT auth)
+  }),
+);
 
-
-const adminAuth = require("../src/routes/adminAuth");
+const adminAuth = require("./routes/adminAuth");
 
 // Routes
 app.use("/", adminAuth);
 
-app.use('/health', (req, res) => {
-  res.send('ok')
-})
+app.use("/health", async (req, res) => {
+ res.send('ok')
+});
 
 // Error handling middleware - ensure JSON responses
 app.use((err, req, res, next) => {
@@ -51,5 +51,4 @@ connectDB()
     console.log("DB connection failed ", err);
   });
 
-
-module.exports = app
+module.exports = app;
