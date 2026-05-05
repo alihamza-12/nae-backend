@@ -13,12 +13,7 @@ app.use(cookieParser());
 
 dotenv.config();
 // ✅ ADD THIS (VERY IMPORTANT)
-app.use(
-  cors({
-    origin: "http://localhost:5173", // React frontend
-    credentials: true, // allow cookies (JWT auth)
-  }),
-);
+app.use(cors());
 
 const adminAuth = require("./routes/adminAuth");
 
@@ -26,7 +21,7 @@ const adminAuth = require("./routes/adminAuth");
 app.use("/", adminAuth);
 
 app.use("/health", async (req, res) => {
- res.send('ok')
+  res.send("ok");
 });
 
 // Error handling middleware - ensure JSON responses

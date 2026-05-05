@@ -12,6 +12,8 @@ adminAuth.post("/admin/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log({ email, password })
+
     // 1. find admin in DB
     const admin = await Admin.findOne({ email });
 
