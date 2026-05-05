@@ -12,7 +12,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
 dotenv.config();
-// ✅ ADD THIS (VERY IMPORTANT)
+//  ADD THIS (VERY IMPORTANT)
 app.use(cors());
 
 const adminAuth = require("./routes/adminAuth");
