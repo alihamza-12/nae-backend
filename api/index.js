@@ -34,7 +34,7 @@ app.use(async (req, res, next) => {
 const adminAuth = require("./routes/adminAuth");
 
 // Routes
-app.use("/", adminAuth);
+// app.use("/", adminAuth);
 
 app.use("/health", async (req, res) => {
   res.send("ok");
